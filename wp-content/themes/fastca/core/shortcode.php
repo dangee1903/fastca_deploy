@@ -89,7 +89,7 @@ function create_shortcode_related_news( ) {
    $args=array(
        'category__in' => $category_ids,
        'post__not_in' => array($post->ID),
-       'showposts'=>2, // Số bài viết bạn muốn hiển thị.
+       'showposts'=>5, // Số bài viết bạn muốn hiển thị.
        //'caller_get_posts'=>1
        'orderby'=> 'rand',
        'ignore_sticky_posts' => 1 

@@ -253,23 +253,21 @@ add_action('init', 'crunchify_stop_loading_wp_embed_and_jquery');
 //         </div>
 function the_breadcrumb() {
 
-    $sep = ' > ';
+    $sep = '<i><img src="'.FASCA_THEME_URL.'/img/arrow-blue.svg" alt=""></i>';
 
     if (!is_front_page()) {
 	
 	// Start the breadcrumb with a link to your homepage
         echo '<div class="pagination">';
-        echo '<p>';
-        // echo get_option('home');
-        // echo '">';
+        echo '<a href="';
+        echo get_option('home');
+        echo '">';
         bloginfo('name');
-        // echo '</p>' . $sep;
-        echo '</p>';
-        echo '<i><img src="'.FASCA_THEME_URL.'/img/arrow-blue.svg" alt=""></i>';
+        echo '</a>' . $sep;
+        // echo '<i><img src="'.FASCA_THEME_URL.'/img/arrow-blue.svg" alt=""></i>';
 	// Check if the current page is a category, an archive or a single page. If so show the category or archive name.
         if (is_category() || is_single() ){
-            echo '<p>';
-            echo the_category();
+            the_category('title_li=');
         } elseif (is_archive() || is_single()){
             if ( is_day() ) {
                 printf( __( '%s', 'text_domain' ), get_the_date() );
