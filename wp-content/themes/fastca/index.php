@@ -230,7 +230,7 @@
                 <div class="sologan__button">
                     <div class="btn btn_sologan">
                         <div class="btn__wrap ">
-                            <a href="#">Tư vấn đăng ký sản phẩm dịch vụ</a>
+                            <a href="https://newca.vn/quan-tri-doanh-nghiep.html" class="hotro">Tư vấn đăng ký sản phẩm dịch vụ</a>
                         </div>
                     </div>
                 </div>

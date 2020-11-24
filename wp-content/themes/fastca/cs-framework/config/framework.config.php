@@ -47,27 +47,19 @@ $options[]      = array(
                     'default'   => 'Fastca',
                     'desc'      => 'Nhập tên ảnh của bạn...',
                 ),
-              
-                array(
-                    'id'        => 'website-slide-h2',
-                    'type'      => 'text',
-                    'title'     => 'Nội Dung Tiêu Đề ',
-                    'default'   => 'Fastca',
-                    'desc'      => 'Nhập nội dung bạn muốn hiện ra...',
-                ),
-                array(
-                    'id'        => 'website-slide-p',
-                    'type'      => 'text',
-                    'title'     => 'Nội Dung',
-                    'default'   => 'Fastca',
-                    'desc'      => 'Nhập nội dung bạn muốn hiện ra...',
-                ),
                 array(
                     'id'        => 'website-slide-image',
                     'type'      => 'image',
                     'title'     => 'Ảnh',
                     'default'   => '',
                     'desc'      => 'Nhập ảnh của bạn...(Hãy chọn ảnh có kích thước 1330px x 250px để hiển thị tốt nhất)',
+                ),
+                array(
+                    'id'        => 'website-slide-link',
+                    'type'      => 'text',
+                    'title'     => 'Link Ảnh',
+                    'default'   => '',
+                    'desc'      => 'Nhập đường dẫn bạn muốn chuyển trang',
                 ),
             )
         ),

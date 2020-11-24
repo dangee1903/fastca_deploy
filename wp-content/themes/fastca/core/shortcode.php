@@ -7,11 +7,7 @@ function create_fastca_website_slide()
     foreach ($banner as $key => $value){
     ?>
       <div class="slide__wrap-item carousel-cell">
-        <div class="slide__wrap-text">
-        <h2><?php echo $value["website-slide-h2"];?></h2>
-        <p><?php echo $value["website-slide-p"];?></p>
-      </div>
-        <img src="<?php echo wp_get_attachment_url($value["website-slide-image"]);?>" alt="">
+        <a href="<?php echo $value["website-slide-link"];?>"><img src="<?php echo wp_get_attachment_url($value["website-slide-image"]);?>" alt=""></a>
       </div>
     <?php }
     endif;
@@ -54,7 +50,6 @@ function create_shortcode_news($news) {
                       <div class="col-md-7 col-sm-7 col-xs-12">
                           <div class="clearfix clearfix-30"></div>
                           <?php  the_post_thumbnail($size = '', array('class' => 'img-hbrand', 'alt' => 'Cyberlotus')); ?>
-                          
                       </div>
                       <div class="clearfix clearfix-30"></div>
                       <div class="line-hbrand"></div>
@@ -71,7 +66,6 @@ function create_shortcode_news($news) {
 
   return $list_post;
 }
-
 add_shortcode('fastca_news', 'create_shortcode_news');
 
 
@@ -89,8 +83,7 @@ function create_shortcode_related_news( ) {
    $args=array(
        'category__in' => $category_ids,
        'post__not_in' => array($post->ID),
-       'showposts'=>5, // Số bài viết bạn muốn hiển thị.
-       //'caller_get_posts'=>1
+       'posts_per_page' => 5, 
        'orderby'=> 'rand',
        'ignore_sticky_posts' => 1 
    );
@@ -101,16 +94,16 @@ function create_shortcode_related_news( ) {
     <div class="relate">
       <div class="relate__title">
       <h2>Bài viết liên quan</h2>
-  </div>
-  <div class="relate__item">
+      </div>
+    <div class="relate__item">
     <ul>
-       <?php while ($featured_query->have_posts()) :
+      <?php while ($featured_query->have_posts()) :
             $featured_query->the_post(); ?>
             <li><a href="<?php the_permalink(); ?>" title="<?php echo the_title(); ?>"><img src="<?php echo FASCA_THEME_URL; ?>/img/book.svg" alt=""><?php echo the_title();?></a></li>
-       <?php endwhile; ?>
-     </ul>
-     </div>
-        </div> 
+      <?php endwhile; ?>
+    </ul>
+    </div>
+    </div> 
    <?php  endif;
    wp_reset_query();
    $list_post = ob_get_contents();
@@ -123,3 +116,49 @@ function create_shortcode_related_news( ) {
 
 add_shortcode('newca_related_news', 'create_shortcode_related_news');
 
+function create_shortcode_category() {
+  $categories = get_the_category();
+
+  if ($categories) 
+  {
+
+   $category_ids = array();
+
+   foreach($categories as $category) $category_ids[] = $category->term_id;
+   $args=array(
+       'category__in' => $category_ids,
+       'orderby'=> 'DESC',
+      //  'ignore_sticky_posts' => 1 
+   );
+  // $args2 = array(  
+  //     'post_type' => 'post',
+  //     'orderby'=>'date',
+  //     'oder'=>'ASC',
+  //     'category_name' => $news['name'],
+  //     // 'posts_per_page' => 4,
+  // );
+  $featured_query = new WP_Query( $args );
+  ob_start();
+  if ($featured_query->have_posts()): ?>
+      <?php  while ($featured_query->have_posts()) :
+        $featured_query->the_post(); 
+          ?>
+           <div class="item">
+            <div class="item__top">
+                <h2><?php echo the_title(); ?></h2>
+                <img src="<?php echo FASCA_THEME_URL; ?>/img/book.svg" alt="">
+            </div>
+            <p><a href="<?php the_permalink(); ?>">Chi tiết</a></p>
+          </div>
+          <?php
+        endwhile; ?>
+     
+ <?php endif;
+  wp_reset_query();
+  $list_post = ob_get_contents();
+  ob_end_clean();
+
+  return $list_post;
+}
+}
+add_shortcode('fastca_category', 'create_shortcode_category');

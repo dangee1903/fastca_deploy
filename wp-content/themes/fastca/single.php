@@ -5,13 +5,6 @@
     <div class="container">
     <div class="single__wrap">
         <?php the_breadcrumb(); ?>
-        <!-- <div class="pagination">
-            <p>Trang Chủ</p>
-            <i><img src="<?php echo FASCA_THEME_URL; ?>/img/arrow-blue.svg" alt=""></i>
-            <p>Sản Phẩm</p>
-            <i><img src="<?php echo FASCA_THEME_URL; ?>/img/arrow-blue.svg" alt=""></i>
-            <p>Chữ ký số cho Tổ chức, doanh nghiệp</p>
-        </div> -->
         <?php if (have_posts()) : ?>
         <?php while (have_posts()) : the_post(); ?>
         <div class="title">
@@ -21,7 +14,7 @@
             <div class="social__wrap">
                 <p>Chia sẻ</p>
                 <i><a href="https://www.facebook.com/sharer?u=&lt;?php the_permalink();?&gt;&amp;t=&lt;?php the_title(); ?&gt;" target="_blank" rel="noopener noreferrer">
-<img src="<?php echo FASCA_THEME_URL; ?>/img/facebook.svg" alt=""></a></i>
+                <img src="<?php echo FASCA_THEME_URL; ?>/img/facebook.svg" alt=""></a></i>
                 <i><a href="#"><img src="<?php echo FASCA_THEME_URL; ?>/img/youtobe.svg" alt=""></a></i>
                 <div class="support">
                     <p><span>Hỗ Trợ:</span>19002158</p>
@@ -33,8 +26,7 @@
         </div>
         <?php endwhile;?>
         <?php endif; ?>
-        
-        <hr>
+        <div class="hr"></div>
         <?php echo do_shortcode('[newca_related_news]'); ?>
         <!-- <div class="relate">
             <div class="relate__title">

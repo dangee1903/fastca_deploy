@@ -40,14 +40,14 @@
     <?php require_once FASCA_THEME_DIR . "/nav.php";?>
     <header>
         <div class="logo__mobile">
-            <a href="#"><img src="<?php echo FASCA_THEME_URL; ?>/img/logo.svg" alt=""></a>
+            <a href="<?php echo get_bloginfo('url')?>"><img src="<?php echo FASCA_THEME_URL; ?>/img/logo.svg" alt=""></a>
         </div>
         <div class="container">
             <div class="menu">
                 <?php require_once FASCA_THEME_DIR . "/top-menu.php";?>
             </div>
             <div class="logo">
-                <a href="#"><img src="<?php echo FASCA_THEME_URL; ?>/img/logo.svg" alt=""></a>
+                <a href="<?php echo get_bloginfo('url')?>"><img src="<?php echo FASCA_THEME_URL; ?>/img/logo.svg" alt=""></a>
                 <h1>FASTCA</h1>
             </div>
             <div class="btn__header">

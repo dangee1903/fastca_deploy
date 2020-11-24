@@ -40,8 +40,9 @@ $('.main-carousel').flickity({
    e.preventDefault();
    $('.contact').css("display", "none");
  })
- $('.hotro').click(function(event){
-   event.stopPropagation();
+ $('.hotro').click(function(e){
+  e.preventDefault();
+  e.stopPropagation();
 
    $('.contact').css("display", "flex");
    console.log('hotro');
